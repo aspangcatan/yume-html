@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YUME - Discover Fresh Music</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'yume-orange': '#F85E2F',
+                    },
+                    backgroundImage: {
+                        'dots-pattern': "url('dots-pattern.svg')", /* We'll generate this below */
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white">
+<!-- Header -->
+<header class="flex justify-between items-center p-10 max-w-7xl mx-auto relative font-bold" style="font-size: 20px">
+    <!-- Left Menu -->
+    <nav class="hidden md:flex items-center space-x-8 absolute left-6">
+        <a href="index.html" class="">Home</a>
+        <a href="artist.html" class="">Artists</a>
+        <a href="listener.html" class="">Listeners</a>
+    </nav>
+
+    <!-- Center Logo -->
+    <div class="flex justify-center w-full">
+        <a href="index.html">
+            <img src="img/logo-yume.png" alt="YUME Logo" class="h-8">
+        </a>
+    </div>
+
+    <!-- Right Menu -->
+    <nav class="hidden md:flex items-center space-x-8 absolute right-6">
+        <a href="reward.html" class="text-orange-500">Rewards</a>
+        <a href="faq.html" class="">FAQ</a>
+        <a href="signin.html" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-full transition">Sign In</a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <div class="md:hidden absolute right-6">
+        <button id="menu-toggle" class="text-white focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+            </svg>
+        </button>
+    </div>
+</header>
+
+
+<!-- Mobile Menu (hidden by default) -->
+<div id="mobile-menu" class="hidden md:hidden px-6 space-y-4 text-center mt-4">
+    <a href="{{ route('index') }}" class="block {{ ($active ?? '') === 'home' ? 'text-orange-500' : 'text-white' }}">Home</a>
+    <a href="{{ route('artist') }}" class="block {{ ($active ?? '') === 'artist' ? 'text-orange-500' : 'text-white' }}">Artists</a>
+    <a href="{{ route('listener') }}" class="block {{ ($active ?? '') === 'listener' ? 'text-orange-500' : 'text-white' }}">Listeners</a>
+    <a href="{{ route('reward') }}" class="block {{ ($active ?? '') === 'reward' ? 'text-orange-500' : 'text-white' }}">Rewards</a>
+    <a href="{{ route('faq') }}" class="block {{ ($active ?? '') === 'faq' ? 'text-orange-500' : 'text-white' }}">FAQ</a>
+    <a href="{{ route('signin') }}" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-full">Sign In</a>
+</div>
+
+
+<section class="relative min-h-[80vh] flex items-center justify-start px-8 bg-black text-white overflow-hidden">
+    <!-- Background Image -->
+    <img src="img/combinedpicture.jpg" alt="Background Image"
+       class="absolute inset-0 w-full h-full object-contain" />
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-black text-white py-8">
+    <div class="text-center text-sm space-y-4">
+        <p class="uppercase tracking-wide">
+            2025 @ COPYRIGHT YUME | ALL RIGHTS RESERVED
+        </p>
+        <p class="space-x-2">
+            <a href="contact.html" class="hover:underline">Contact</a> |
+            <a href="faq.html" class="hover:underline">FAQ</a> |
+            <a href="#" class="hover:underline">Privacy Policy</a> |
+            <a href="#" class="hover:underline">Terms & Conditions</a> |
+            <a href="#" class="hover:underline">Compensation Plan</a>
+        </p>
+        <div class="flex justify-center items-center gap-6 pt-4">
+            <a href="#" class="w-12 h-12 flex items-center justify-center border-2 border-white rounded-full text-xl hover:bg-white hover:text-black transition-all duration-200">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-12 h-12 flex items-center justify-center border-2 border-white rounded-full text-xl hover:bg-white hover:text-black transition-all duration-200">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-12 h-12 flex items-center justify-center border-2 border-white rounded-full text-xl hover:bg-white hover:text-black transition-all duration-200">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="w-12 h-12 flex items-center justify-center border-2 border-white rounded-full text-xl hover:bg-white hover:text-black transition-all duration-200">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+        </div>
+
+    </div>
+</footer>
+
+
+<!-- Small Script for Mobile Menu -->
+<script>
+    const toggleBtn = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    toggleBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>
